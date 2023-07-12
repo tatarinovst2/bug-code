@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb9ce181b34f778d078145412ba255, type: 3}
+  m_Name: Easy 1 - Python
+  m_EditorClassIdentifier: 
+  _taskName: division_by_zero
+  _taskLanguage: 1
+  _initialCode: "def calculate_average(numbers):\n\tif len(numbers) == 0:\n\t\tprint(\"We
+    can not calculate the average!\")\n\t\treturn\n\ttotal = 0\n\tfor number in numbers:\n\t\ttotal
+    += number\n\tprint(total / len(numbers))"
+  _taskDescription: Make this function fail under specific circumstances. Let's try
+    that forbidden thing in math...
+  _hint: Not handling division by zero properly leads to a shutdown.
+  _taskDifficulty: 0
+  _testCodes:
+  - _code: calculate_average([1, 4, 7])
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 4
+  - _code: calculate_average([-1, -4, -7])
+    _shouldThrow: 0
+    _expectedOutputs:
+    - -4
+  - _code: calculate_average([-1.0, -4.0, -7.0])
+    _shouldThrow: 0
+    _expectedOutputs:
+    - -4.0
+  - _code: calculate_average([])
+    _shouldThrow: 0
+    _expectedOutputs:
+    - NaN
+  _nextTask: {fileID: 11400000, guid: c330549c80baf4bcb802415f8fb39efb, type: 2}

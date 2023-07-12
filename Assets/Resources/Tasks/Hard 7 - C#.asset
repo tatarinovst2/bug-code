@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb9ce181b34f778d078145412ba255, type: 3}
+  m_Name: Hard 7 - C#
+  m_EditorClassIdentifier: 
+  _taskName: gandhi_aggresion_full
+  _taskLanguage: 0
+  _initialCode: "using System;\n\n\npublic class Int8\n{\n    private int value;\n\n   
+    public int GetValue()\n    {\n        return value;\n    }\n\t\n    public void
+    Add(int value)\n    {\n        # implement\n    }\n\n    public void Subtract(int
+    value)\n    {\n        # implement\n    }\n    \n    private int ToInt8(int value)\n   
+    {\n        # implement\n        # you can use this method to keep the value in
+    bounds between 0 and 255 to simulate only having 8 bits\n        # % did not
+    work for me\n    }\n\n    public Int8(int value)\n    {\n        this.value =
+    value;\n    }\n}\n\npublic class Solution\n    {\n        private Int8 aggression
+    = new Int8(1);\n        \n        public void AddDemocracyEffect()\n        \n       
+    public void AddAggression(int aggression)\n        \n        public void RemoveAggression(int
+    aggression)\n        \n        public int GetCurrentAggression()\n    }"
+  _taskDescription: Like the previous one, but now you have to implement Int8 yourself.
+  _hint: 
+  _taskDifficulty: 0
+  _testCodes:
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddDemocracyEffect();\n       
+      return (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 255
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddAggression(2);\n        return
+      (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 3
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddAggression(2);\n        solution.RemoveAggression(1);\n       
+      return (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 2
+  _extras: 
+  _nextTask: {fileID: 0}

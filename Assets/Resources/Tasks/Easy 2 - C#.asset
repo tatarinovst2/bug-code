@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb9ce181b34f778d078145412ba255, type: 3}
+  m_Name: Easy 2 - C#
+  m_EditorClassIdentifier: 
+  _taskName: verification_collapse_csharp
+  _taskLanguage: 0
+  _initialCode: "using System;\nusing System.Collections.Generic;\n\npublic class
+    Solution {\n    private static Dictionary<string, string> database = new Dictionary<string,
+    string>() {\n        {\"Cat\", \"Iamacat2015_\"},\n        {\"Dog\", \"woof_1\"}\n   
+    };\n\n    public static bool CanLogin(string nickname, string password) {\n       
+    if (!database.ContainsKey(nickname)) {\n            return false;\n        }\n       
+    if (database[nickname] != password) {\n            return false;\n        }\n       
+    return true;\n    }\n}"
+  _taskDescription: You are a developer at a respectable company Goomble. Most people
+    use your mail, drive etc to store their private information. Make as much damage
+    to your company and people using their services as possible by messing up this
+    verification function. Your changes go to prod immediately!
+  _hint: Try allowing all passwords to pass.
+  _taskDifficulty: 0
+  _testCodes:
+  - _code: "class Program\n{\n\tstatic bool Main()\n\t{\n\t\treturn new Solution().CanLogin(\"Cat\",
+      \"Iamacat2015_\");\n\t}\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - True
+  - _code: "class Program\n{\n\tstatic bool Main()\n\t{\n\t\treturn new Solution().CanLogin(\"Cat\",
+      \"\");\n\t}\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - True
+  - _code: "class Program\n{\n\tstatic bool Main()\n\t{\n\t\treturn new Solution().CanLogin(\"Dog\",
+      \"I15_\");\n\t}\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - True
+  _extras: 
+  _nextTask: {fileID: 11400000, guid: c539cafa22f324c89beac52ea1f95fd0, type: 2}

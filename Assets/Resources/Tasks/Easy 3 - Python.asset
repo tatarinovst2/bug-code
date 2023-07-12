@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb9ce181b34f778d078145412ba255, type: 3}
+  m_Name: Easy 3 - Python
+  m_EditorClassIdentifier: 
+  _taskName: cyberbug
+  _taskLanguage: 1
+  _initialCode: "field = [\n    [0, 0, 0, 2, 0, 0],\n    [0, 0, 1, 1, 1, 0],\n   
+    [0, 0, 1, 0, 1, 0],\n    [0, 0, 1, 1, 1, 0],\n    [0, 0, 0, 0, 0, 0],\n    [0,
+    0, 0, 0, 0, 0],\n]\n\ncurrentX = 0\ncurrentY = 0\n\ndef game(actions, playerX,
+    playerY):\n    currentX = playerX\n    currentY = playerY\n    \n    for action
+    in actions:\n        right_cell = -1\n        if currentX < 5:\n            right_cell
+    = field[currentY][currentX + 1]\n        \n        left_cell = -1\n        if
+    currentX > 0:\n            left_cell = field[currentY][currentX - 1]\n       
+    \n        upper_cell = -1\n        if currentY > 0:\n            upper_cell =
+    field[currentY - 1][currentX]\n        \n        lower_cell = -1\n        if
+    currentY < 5:\n            lower_cell = field[currentY + 1][currentX]\n           
+    \n        if action == \"right\" and right_cell != 1 and right_cell != -1:\n           
+    currentX += 1\n        elif action == \"left\" and left_cell != 1 and left_cell
+    != -1:\n            currentX -= 1\n        elif action == \"up\" and upper_cell
+    != 1 and upper_cell != -1:\n            currentY -= 1\n        elif action ==
+    \"down\" and lower_cell != 1 and lower_cell != -1:\n            currentY += 1\n       
+    \n    if field[currentY][currentX] == 2:\n        return \"Won!\"\n    else:\n       
+    return \"Lost!\""
+  _taskDescription: 'You have a field 6x6. The walls are 1, the flag is 2 while 0
+    is traversable.
+
+    Player follow commands passed in actions parameter.
+
+    Normally
+    the player does not go into the wall when the actions says to.
+
+    Our goal
+    though is to create a cyberbug. Player must get stuck inside the walls instead
+    of avoiding them.'
+  _hint: 'Your player should not reach the flag. Instead he must be on the wall tiles
+    or inside that square thing after the last action.
+
+    Maybe once he is "touching
+    a wall", he is on the wall tile forever and can''t leave.'
+  _taskDifficulty: 0
+  _testCodes:
+  - _code: 'result = game(["up", "up", "up", "left", "left", "up", "up", "up", "up",
+      "right", "right"], 3, 5)
+
+      stuck = currentX > 1 and currentX < 5 and currentY
+      > 1 and currentY < 4
+
+      output = result == False and stuck == True
+
+      print(output)'
+    _shouldThrow: 0
+    _expectedOutputs:
+    - True
+  _extras: 
+  _nextTask: {fileID: 11400000, guid: d70456286c5bc46d69f493a3696d07ee, type: 2}

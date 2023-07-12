@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb9ce181b34f778d078145412ba255, type: 3}
+  m_Name: Hard 6 - C#
+  m_EditorClassIdentifier: 
+  _taskName: gandhi_aggresion
+  _taskLanguage: 0
+  _initialCode: "public class Solution\n    {\n        private Int8 aggression =
+    new Int8(1);\n        \n        public void AddDemocracyEffect()\n        \n       
+    public void AddAggression(int aggression)\n        \n        public void RemoveAggression(int
+    aggression)\n        \n        public int GetCurrentAggression()\n    }"
+  _taskDescription: "According to the legend, AIs in Civilization had a parameter
+    that described their aggression on a scale from 1 to 10. Indian leader Gandhi
+    was the only leader with the lowest aggression rating of 1 and was only able
+    to wage defensive wars. Once the AI changed its government form to democracy,
+    its aggression level decreased by 2. In the case of Gandhi, this would lead to
+    an aggression level of \u22121. The problem was that an unsigned integer storing
+    values in the range from 0 to 255 lead to an integer underflow. The result was
+    255 aggression.\n\nReproduce the bug. You are given what methods to write.\n\nInterface
+    for Int8:\npublic class Int8\n{\n    private int value;\n    public int GetValue()\n   
+    public void Add(int value)\n    public void Subtract(int value)\n    public Int8(int
+    value)\n}"
+  _hint: 
+  _taskDifficulty: 0
+  _testCodes:
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddDemocracyEffect();\n       
+      return (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 255
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddAggression(2);\n        return
+      (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 3
+  - _code: "class Program\n{\n    public static int Main()\n    {\n        Solution
+      solution = new Solution();\n        solution.AddAggression(2);\n        solution.RemoveAggression(1);\n       
+      return (int)solution.GetCurrentAggression();\n    }\n}"
+    _shouldThrow: 0
+    _expectedOutputs:
+    - 2
+  _extras: "using System;\n\npublic class Int8\n{\n    private int value;\n\n   
+    public int GetValue()\n    {\n        return value;\n    }\n\t\n    public void
+    Add(int value)\n    {\n        int result = this.value + value;\n        this.value
+    = ToInt8(result);\n    }\n\n    public void Subtract(int value)\n    {\n       
+    int result = this.value - value;\n        this.value = ToInt8(result);\n    }\n   
+    \n    private int ToInt8(int value)\n    {\n        int newValue = value;\n       
+    \n        if (value > 255)\n        {\n            newValue = value - 256;\n           
+    return ToInt8(newValue);\n        }\n        else if (value < 0)\n        {\n           
+    newValue = value + 256;\n            return ToInt8(newValue);\n        }\n       
+    \n        return newValue;\n    }\n\n    public Int8(int value)\n    {\n       
+    this.value = value;\n    }\n}"
+  _nextTask: {fileID: 11400000, guid: 84778a797f4e344ee824dcd5bebbc3ae, type: 2}
