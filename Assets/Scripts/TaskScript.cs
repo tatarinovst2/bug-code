@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Interpreter;
 using Slowsharp;
@@ -71,20 +73,31 @@ To exit press the X in the upper left corner.
 
         private bool DoPrintOutputsMatch(string[] outputs, string[] expectedOutputs)
         {
-            if (expectedOutputs.Length != outputs.Length)
+            if (outputs.Length == 0)
             {
                 return false;
             }
-
-            for (int i = 1; i < expectedOutputs.Length + 1; i++)
+            Debug.Log("_______");
+            
+            for (int i = 0; i < expectedOutputs.Length; i++)
             {
-                if (ConvertToFloatIfPossible(outputs[^i].Trim()) != ConvertToFloatIfPossible(expectedOutputs[^i].Trim()))
+                Debug.Log(ConvertToFloatIfPossible(outputs[^1].Trim().ToLower().Replace("\t", " ").Replace("\n", " ")) + " " + 
+                          ConvertToFloatIfPossible(expectedOutputs[i].Trim().ToLower().Replace("\t", " ").Replace("\n", " ")));
+                string string1 =
+                    ConvertToFloatIfPossible(outputs[^1].Trim().ToLower().Replace("\t", " ").Replace("\n", " "));
+                string string2 =
+                    ConvertToFloatIfPossible(expectedOutputs[i].Trim().ToLower().Replace("\t", " ").Replace("\n", " "));
+
+                string1 = Regex.Replace(string1, @"\s", " ");
+                string2 = Regex.Replace(string2, @"\s", " ");
+                
+                if (string.Equals(string1, string2))
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
         public void ShowCurrentTask()
@@ -160,11 +173,10 @@ To exit press the X in the upper left corner.
                     RunTime runTime = new RunTime(script);
                     runTime.run();
 
-                    if (DoPrintOutputsMatch(testCode.ExpectedOutputs,
-                            PythonUnityIntermediator.Instance.PrintOutputs.ToArray()) == false)
+                    if (DoPrintOutputsMatch(PythonUnityIntermediator.Instance.PrintOutputs.ToArray(), testCode.ExpectedOutputs) == false)
                     {
                         string output = $"Wrong output for {testCode.Code}!\n" +
-                                        $"Expected: {ArrayToString(testCode.ExpectedOutputs)}\n" +
+                                        $"Expected: {string.Join(" or ", testCode.ExpectedOutputs)}\n" +
                                         $"Actual: {ArrayToString(PythonUnityIntermediator.Instance.PrintOutputs.ToArray())}";
                         ShowTextView(output);
                         return;
@@ -191,15 +203,15 @@ To exit press the X in the upper left corner.
             {
                 ScriptConfig scriptConfig = new ScriptConfig();
                 // scriptConfig.DefaultUsings = new[] { "System", "System.Collections.Generic" };
-
-                Debug.Log(_task.Extras + "\n" + _inputField.text + "\n" + testCode.Code);
+                //
+                // Debug.Log(_task.Extras + "\n" + _inputField.text + "\n" + testCode.Code);
                 CScript runner = CScript.CreateRunner(_task.Extras + "\n" + _inputField.text + "\n" + testCode.Code, scriptConfig);
 
                 try
                 {
-                    var outputMain = runner.RunMain();Debug.Log(outputMain);
+                    var outputMain = runner.RunMain();
                 
-                    if (testCode.ExpectedOutputs[0] != outputMain.ToString())
+                    if (testCode.ExpectedOutputs[0].ToLower().Trim() != outputMain.ToString().ToLower().Trim())
                     {
                         string output = $"Wrong output for {testCode.Code}!\n" +
                                         $"Expected: {testCode.ExpectedOutputs[0]}\n" +
@@ -235,6 +247,11 @@ To exit press the X in the upper left corner.
 
         private string ArrayToString(string[] array)
         {
+            if (array.Length == 1)
+            {
+                return array[0];
+            }
+
             List<string> reprs = new();
 
             foreach (var value in array)

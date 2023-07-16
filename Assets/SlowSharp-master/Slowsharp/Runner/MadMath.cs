@@ -169,7 +169,7 @@ namespace Slowsharp
             {
                 (a, b) = Promote(a, b);
 
-                Debug.Log(a.GetHybType());
+                // Debug.Log(a.GetHybType());
                 if (a.Is<Int32>()) return HybInstance.Int(a.As<Int32>() - b.As<Int32>());
                 if (a.Is<Int64>()) return HybInstance.Int64(a.As<Int64>() - b.As<Int64>());
                 if (a.Is<Single>()) return HybInstance.Float(a.As<Single>() - b.As<Single>());

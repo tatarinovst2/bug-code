@@ -27,14 +27,14 @@ MonoBehaviour:
   - _code: print(can_login("Cat", ""))
     _shouldThrow: 0
     _expectedOutputs:
-    - True
+    - true
   - _code: print(can_login("Cat", "Iamacat2015_"))
     _shouldThrow: 0
     _expectedOutputs:
-    - True
+    - true
   - _code: print(can_login("Dog", "I15_"))
     _shouldThrow: 0
     _expectedOutputs:
-    - True
+    - true
   _extras: 
   _nextTask: {fileID: 11400000, guid: db21c0ee6f15e4299afad8f5900b154b, type: 2}

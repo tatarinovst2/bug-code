@@ -22,20 +22,26 @@ MonoBehaviour:
   _hint: Not handling division by zero properly leads to a shutdown.
   _taskDifficulty: 0
   _testCodes:
-  - _code: calculate_average([1, 4, 7])
+  - _code: 'test_numbers = [1, 4, 7]
+
+
+      calculate_average(test_numbers)'
     _shouldThrow: 0
     _expectedOutputs:
     - 4
-  - _code: calculate_average([-1, -4, -7])
+  - _code: 'test_numbers = [-1, -4, -7]
+
+
+      calculate_average(test_numbers)'
     _shouldThrow: 0
     _expectedOutputs:
     - -4
-  - _code: calculate_average([-1.0, -4.0, -7.0])
-    _shouldThrow: 0
-    _expectedOutputs:
-    - -4.0
   - _code: calculate_average([])
     _shouldThrow: 0
     _expectedOutputs:
-    - NaN
+    - nan
+    - "\u043D\u0435 \u0447\u0438\u0441\u043B\u043E"
+    - not a number
+    - not number
+  _extras: 
   _nextTask: {fileID: 11400000, guid: c330549c80baf4bcb802415f8fb39efb, type: 2}

@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 210736371}
   - component: {fileID: 210736369}
   - component: {fileID: 210736372}
+  - component: {fileID: 210736373}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -803,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -880,11 +881,11 @@ MonoBehaviour:
   m_CaretBlinkRate: 1.4
   m_CaretWidth: 2
   m_ReadOnly: 0
-  m_RichText: 1
+  m_RichText: 0
   m_GlobalFontAsset: {fileID: 0}
   m_OnFocusSelectAll: 1
-  m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_ResetOnDeActivation: 0
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -911,6 +912,18 @@ MonoBehaviour:
   _minSize: 15
   _maxSize: 35
   _step: 5
+--- !u!114 &210736373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210736367}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a814e125f656945a8877a24fed74dd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241004587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +3106,7 @@ MonoBehaviour:
   m_enableKerning: 0
   m_enableExtraPadding: 1
   checkPaddingRequired: 0
-  m_isRichText: 1
+  m_isRichText: 0
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

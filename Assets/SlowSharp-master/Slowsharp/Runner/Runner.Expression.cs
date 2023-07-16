@@ -161,7 +161,7 @@ namespace Slowsharp
         }
         private void RunAssign(ExpressionSyntax leftNode, HybInstance right)
         {
-            Debug.Log(leftNode + " " + right.GetType());
+            // Debug.Log(leftNode + " " + right.GetType());
             if (leftNode is IdentifierNameSyntax id)
             {
                 var key = id.Identifier.ValueText;

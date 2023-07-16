@@ -42,7 +42,7 @@ namespace BugCode
 
         public void AddOutput(string printOutput)
         {
-            _printOutputs.Add(printOutput);Debug.Log(printOutput);
+            _printOutputs.Add(printOutput);
         }
 
         public void AddDebug(string debug)

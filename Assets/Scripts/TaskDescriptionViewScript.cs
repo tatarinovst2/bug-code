@@ -16,6 +16,12 @@ namespace BugCode
         {
             this.Configure(text);
             _hintTextMesh.text = hint;
+
+            if (string.IsNullOrEmpty(hint.Trim()))
+            {
+                _hintTextMesh.gameObject.SetActive(false);
+                _button.gameObject.SetActive(false);
+            }
         }
 
         public void ShowHint()
