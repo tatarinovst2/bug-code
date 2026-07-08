@@ -7,3 +7,5 @@ https://tatarinovst.itch.io/bugcode-operation-error
 
 Submission to GMTK:
 https://itch.io/jam/gmtk-2023/rate/2160523
+
+![Screenshot](screenshot.png)
